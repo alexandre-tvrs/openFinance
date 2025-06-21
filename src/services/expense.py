@@ -1,4 +1,4 @@
-from uuid import UUID
+from uuid import uuid4
 from fastapi import Query
 from sqlmodel import select
 from typing import Annotated
@@ -18,7 +18,7 @@ async def create_expense(
     test: ExpenseSchema, session: SessionDep
 ) -> ExpenseResponseSchema:
     expense = ExpenseModel(**test.model_dump())
-    expense.id = UUID(expense.id)
+    expense.id = uuid4()
     session.add(expense)
     session.commit()
     session.refresh(expense)

@@ -4,6 +4,7 @@ from importlib import util
 from sqlmodel import SQLModel
 from core.database import setup as db
 from fastapi import APIRouter, FastAPI
+from models import ExpenseModel
 
 
 def get_project_metadata() -> dict:
